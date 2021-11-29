@@ -13,12 +13,12 @@ public class Connexion extends Application {
 	
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("Connexion.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("HolyGL - Logiciel de gestion de congés");
-			primaryStage.initStyle(StageStyle.UTILITY);
+			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setResizable(false);
 			primaryStage.show();
 		} catch(Exception e) {

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: #fcfcfc;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceGraphique.ConnexionController">
    <children>
       <StackPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #f1f1f1;">
          <children>
@@ -23,12 +25,12 @@
             </ImageView>
          </children>
       </StackPane>
-      <Label layoutX="430.0" layoutY="70.0" text="Connexion" textFill="#083669">
+      <Label layoutX="430.0" layoutY="92.0" text="Connexion" textFill="#083669">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER_LEFT" layoutX="430.0" layoutY="119.0" prefHeight="35.0" prefWidth="300.0" style="-fx-border-color: #dddddd; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px;">
+      <HBox alignment="CENTER_LEFT" layoutX="430.0" layoutY="137.0" prefHeight="35.0" prefWidth="300.0" style="-fx-border-color: #dddddd; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px;">
          <children>
             <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,7 +50,7 @@
             </TextField>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="430.0" layoutY="165.0" prefHeight="35.0" prefWidth="300.0" style="-fx-border-color: #dddddd; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px;">
+      <HBox alignment="CENTER_LEFT" layoutX="430.0" layoutY="183.0" prefHeight="35.0" prefWidth="300.0" style="-fx-border-color: #dddddd; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px;">
          <children>
             <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -58,21 +60,34 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </ImageView>
-            <TextField prefHeight="25.0" prefWidth="250.0" promptText="Mot de passe" style="-fx-background-color: transparent;">
+            <PasswordField prefHeight="25.0" prefWidth="264.0" promptText="Mot de passe" style="-fx-background-color: transparent;">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
                <font>
                   <Font size="14.0" />
                </font>
-            </TextField>
+            </PasswordField>
          </children>
       </HBox>
-      <Button layoutX="430.0" layoutY="217.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: #37bfeb; -fx-background-radius: 10px;" text="Se connecter" textFill="#083669">
+      <Button layoutX="430.0" layoutY="235.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: #37bfeb; -fx-background-radius: 10px;" text="Se connecter" textFill="#083669">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <CheckBox layoutX="608.0" layoutY="226.0" mnemonicParsing="false" text="Se rappeler de moi" textFill="#083669" />
+      <CheckBox layoutX="608.0" layoutY="244.0" mnemonicParsing="false" text="Se rappeler de moi" textFill="#083669" />
+      <HBox alignment="CENTER_RIGHT" layoutX="400.0" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="20.0" prefWidth="400.0" style="-fx-background-color: #e2e2e2;">
+         <children>
+            <FontAwesomeIcon fill="#37bfeb" glyphName="MINUS" onMouseClicked="#min" size="1.5em">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <FontAwesomeIcon fill="#083669" glyphName="CLOSE" onMouseClicked="#close" size="1.5em">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+         </children></HBox>
    </children>
 </AnchorPane>
