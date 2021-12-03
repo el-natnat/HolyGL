@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: #fcfcfc;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceGraphique.ConnexionController">
+<AnchorPane prefHeight="420.0" prefWidth="800.0" style="-fx-background-color: #fcfcfc;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceGraphique.InterfaceController">
    <children>
-      <StackPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #f1f1f1;">
+      <StackPane layoutY="18.0" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #f1f1f1;">
          <children>
             <ImageView fitHeight="226.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -25,7 +25,7 @@
             </ImageView>
          </children>
       </StackPane>
-      <Label layoutX="430.0" layoutY="92.0" text="Connexion" textFill="#083669">
+      <Label layoutX="430.0" layoutY="92.0" prefHeight="35.0" prefWidth="122.0" text="Connexion" textFill="#083669">
          <font>
             <Font size="24.0" />
          </font>
@@ -40,7 +40,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </ImageView>
-            <TextField prefHeight="25.0" prefWidth="250.0" promptText="Nom d'utilisateur" style="-fx-background-color: transparent;">
+            <TextField fx:id="userName" prefHeight="25.0" prefWidth="250.0" promptText="Nom d'utilisateur" style="-fx-background-color: transparent;">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
@@ -60,7 +60,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </ImageView>
-            <PasswordField prefHeight="25.0" prefWidth="264.0" promptText="Mot de passe" style="-fx-background-color: transparent;">
+            <PasswordField fx:id="password" prefHeight="25.0" prefWidth="264.0" promptText="Mot de passe" style="-fx-background-color: transparent;">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
@@ -70,14 +70,22 @@
             </PasswordField>
          </children>
       </HBox>
-      <Button layoutX="430.0" layoutY="235.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: #37bfeb; -fx-background-radius: 10px;" text="Se connecter" textFill="#083669">
+      <Button layoutX="430.0" layoutY="235.0" mnemonicParsing="false" onAction="#connect" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: #37bfeb; -fx-background-radius: 10px;" text="Se connecter" textFill="#083669">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
       <CheckBox layoutX="608.0" layoutY="244.0" mnemonicParsing="false" text="Se rappeler de moi" textFill="#083669" />
-      <HBox alignment="CENTER_RIGHT" layoutX="400.0" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="20.0" prefWidth="400.0" style="-fx-background-color: #e2e2e2;">
+      <HBox alignment="CENTER_RIGHT" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="20.0" prefWidth="800.0" style="-fx-background-color: #e2e2e2;">
          <children>
+            <Label prefHeight="20.0" prefWidth="224.0" text="HolyGL - Logiciel de gestion de congés">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="525.0" />
+               </HBox.margin>
+            </Label>
             <FontAwesomeIcon fill="#37bfeb" glyphName="MINUS" onMouseClicked="#min" size="1.5em">
                <HBox.margin>
                   <Insets right="10.0" />
@@ -89,5 +97,6 @@
                </HBox.margin>
             </FontAwesomeIcon>
          </children></HBox>
+      <Label fx:id="incorrect" layoutX="430.0" layoutY="286.0" prefHeight="20.0" prefWidth="279.0" text="Nom d'utilisateur ou mot de passe incorect" textFill="RED" visible="false" />
    </children>
 </AnchorPane>
