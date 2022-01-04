@@ -20,10 +20,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class InterfaceController implements Initializable {
+public class InterfaceConnexionController implements Initializable {
 	
 	private double x,y;
-	
 	
 	@FXML
 	private Label incorrect;
@@ -36,7 +35,7 @@ public class InterfaceController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		/*
+		
 			ChangeListener<String> change = new ChangeListener<String>() {
 				@Override
 				public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -46,7 +45,7 @@ public class InterfaceController implements Initializable {
 		
 			userName.textProperty().addListener(change);
 			password.textProperty().addListener(change);
-		*/
+		
 	}
 	
 	@FXML

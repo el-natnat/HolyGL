@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="420.0" prefWidth="800.0" style="-fx-background-color: #fcfcfc;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceGraphique.InterfaceController">
+<AnchorPane prefHeight="420.0" prefWidth="800.0" style="-fx-background-color: #fcfcfc;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceGraphique.InterfaceConnexionController">
    <children>
       <StackPane layoutY="18.0" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #f1f1f1;">
          <children>
