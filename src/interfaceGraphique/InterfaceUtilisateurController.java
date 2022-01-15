@@ -32,6 +32,12 @@ public class InterfaceUtilisateurController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		/*
+			Charger les différents congés acceptés et en cours de validation depuis la bdd
+			Vous pouvez créer une liste de ObjectAjoutConges avec le boolean de l'objet pour indiquer si le conges a été validé (je ferai l'achiffage de cette liste)
+			Vous pouvez réquperer l'utilisateur actuel avec InterfaceConnexionController.utilisateur
+		*/
+		
 	}
 	
 	@FXML
@@ -115,6 +121,12 @@ public class InterfaceUtilisateurController implements Initializable {
 		ObjectAjoutConges l = DisplayInterface.displayAjoutConges();
 		
 		if(l.isCongesValide()) {
+			
+			/*
+				Ajout dans la bdd de la demande de congés
+			*/
+			
+			//sous reserve de l'ajout de la demande dans la bdd
 			demande.getChildren().add(conges(l.getNomConges(),l.getDebutConges().toString(),l.getFinConges().toString()));
 			System.out.print("Conges ajoute");
 		}else {

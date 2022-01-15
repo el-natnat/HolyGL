@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 public class InterfaceConnexionController implements Initializable {
 	
 	private double x,y;
+	public static String utilisateur;
 	
 	@FXML
 	private Label incorrect;
@@ -113,6 +114,7 @@ public class InterfaceConnexionController implements Initializable {
 
         if(rs.next()) {
             System.out.println("User connected");
+            utilisateur = username;
             switchToUserInterface(event);
         }
         else {
