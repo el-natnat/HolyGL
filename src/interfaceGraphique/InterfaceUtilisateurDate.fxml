@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceGraphique.InterfaceUtilisateurAjoutController">
+   <children>
+      <HBox alignment="CENTER_RIGHT" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="20.0" prefWidth="300.0" style="-fx-background-color: #e2e2e2;">
+         <children>
+            <FontAwesomeIcon fill="#083669" glyphName="CLOSE" onMouseClicked="#close" size="1.5em">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" layoutY="20.0" prefHeight="180.0" prefWidth="300.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Label text="Nom :" />
+                  <TextField fx:id="nomDemande" prefHeight="10.0" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <children>
+                  <Label text="Date de debut : " />
+                  <DatePicker fx:id="dateDebutConges" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <children>
+                  <Label text="Date de fin : " />
+                  <DatePicker fx:id="dateFinConges" disable="true" editable="false" />
+               </children>
+            </HBox>
+            <Button fx:id="buttonValide" disable="true" mnemonicParsing="false" onAction="#valideConges" text="Validé">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

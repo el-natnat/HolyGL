@@ -1,5 +1,6 @@
 package interfaceGraphique;
 import javafx.scene.*;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;

@@ -2,7 +2,6 @@ package interfaceGraphique;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -13,6 +12,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -27,7 +27,7 @@ public class InterfaceUtilisateurController implements Initializable {
 	private VBox accepte;
 	
 	@FXML
-	private VBox demande;
+	public VBox demande;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -64,9 +64,9 @@ public class InterfaceUtilisateurController implements Initializable {
 		stage.close();
 	}
 	
-	private VBox conges() {
+	private VBox conges(String nom, String dateDebut, String dateFin) {
 		
-		Label label1 = new Label("Vacances");
+		Label label1 = new Label(nom);
 		label1.setPrefWidth(130);
 		label1.setFont(new Font("System Bold",16));
 		HBox.setMargin(label1, new Insets(0,5,0,0));
@@ -88,13 +88,13 @@ public class InterfaceUtilisateurController implements Initializable {
 		h.setPrefWidth(200);
 		h.setStyle("-fx-background-color: #0000FF;");
 		
-		Label label2 = new Label("Debut : **/**/****");
-		label2.setPrefWidth(130);
+		Label label2 = new Label("Debut : "+dateDebut);
+		label2.setPrefWidth(TextField.USE_COMPUTED_SIZE);
 		label2.setFont(new Font("System Bold",16));
 		VBox.setMargin(label2, new Insets(10,0,0,0));
 		
-		Label label3 = new Label("Fin : **/**/****");
-		label3.setPrefWidth(130);
+		Label label3 = new Label("Fin : "+dateFin);
+		label3.setPrefWidth(TextField.USE_COMPUTED_SIZE);
 		label3.setFont(new Font("System Bold",16));
 		VBox.setMargin(label3, new Insets(5,0,0,0));
 		
@@ -110,11 +110,21 @@ public class InterfaceUtilisateurController implements Initializable {
 	}
 	
 	@FXML
-	private void addConges(ActionEvent event) throws IOException {
+	private void prendreConges(ActionEvent event) throws IOException {
 		
-		System.out.print("Conges ajoute");
-		demande.getChildren().add(conges());
+		ObjectAjoutConges l = DisplayInterface.displayAjoutConges();
 		
+		if(l.isCongesValide()) {
+			demande.getChildren().add(conges(l.getNomConges(),l.getDebutConges().toString(),l.getFinConges().toString()));
+			System.out.print("Conges ajoute");
+		}else {
+			System.out.print("Conges pas ajoute");
+		}
+		
+	}
+	
+	public void addConges(String nom, String dateDebut, String dateFin) {
+		demande.getChildren().add(conges(nom,dateDebut,dateFin));
 	}
 	
 }

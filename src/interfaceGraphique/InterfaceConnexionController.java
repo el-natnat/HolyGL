@@ -2,6 +2,11 @@ package interfaceGraphique;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -79,20 +84,47 @@ public class InterfaceConnexionController implements Initializable {
 	}
 	
 	@FXML
-	private void connect(ActionEvent event) throws IOException {
-		
-		if(userName.getText().equals("User")&&password.getText().equals("azerty")) {
-			System.out.println("User connected");
-			switchToUserInterface(event);
-		}else {
-			if(userName.getText().equals("RH")&&password.getText().equals("azerty")) {
-				System.out.println("RH connected");
-			}else {
-				password.setText("");
-				incorrect.setVisible(true);
-			}
-		}
-	}
+    private void connect(ActionEvent event) throws IOException, SQLException {
+        
+        Connection con;
+        PreparedStatement pst;
+        ResultSet rs;
+        
+        String username= userName.getText();
+        String pass= password.getText();
+        
+        try {
+            // Charger le driver MYSQL
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            // Pour se connecter à la ("jdbc:mysql://localhost/nom de la base", "User du serveur", "Mot de passe ")
+            con = DriverManager.getConnection("jdbc:mysql://localhost/holidays", "root", "Kutdre25||");
+            // Ecrire requete
+            String requete1="select * from authentification where login=? and mdp=?";
+            // Entrer la requete SQL
+            pst=con.prepareStatement(requete1);
+            
+            pst.setString(1,username );
+            pst.setString(2,pass );
+
+            
+            // exécuté requete SQL quand on fait un SELECT 
+            rs= pst.executeQuery();
+            
+
+        if(rs.next()) {
+            System.out.println("User connected");
+            switchToUserInterface(event);
+        }
+        else {
+            password.setText("");
+            incorrect.setVisible(true);
+        }
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    
+    }
 	
 	@FXML
 	public void switchToUserInterface(Event event) throws IOException {
