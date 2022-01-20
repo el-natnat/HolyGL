@@ -4,24 +4,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class InterfaceUtilisateurController implements Initializable {
 	
 	private double x,y;
+	
+	private int n = 0;
 	
 	@FXML
 	private VBox accepte;
@@ -70,49 +68,21 @@ public class InterfaceUtilisateurController implements Initializable {
 		stage.close();
 	}
 	
-	private VBox conges(String nom, String dateDebut, String dateFin) {
+	private Parent conges(String nom, String dateDebut, String dateFin) throws IOException {
 		
-		Label label1 = new Label(nom);
-		label1.setPrefWidth(130);
-		label1.setFont(new Font("System Bold",16));
-		HBox.setMargin(label1, new Insets(0,5,0,0));
+		FXMLLoader loader = new FXMLLoader(Interface.class.getResource("InterfaceConges.fxml"));
+		Parent root = loader.load();
+		InterfaceCongesController controller = loader.getController();
+		controller.setN(n);
+		controller.setTextNom(nom);
+		controller.setTextDateDebut(dateDebut);
+		controller.setTextDateFin(dateFin);
 		
-		FontAwesomeIcon icon1 = new FontAwesomeIcon();
-		icon1.setGlyphName("COG");
-		icon1.setSize("1.4em");
-		HBox.setMargin(icon1, new Insets(0,5,0,0));
+		n++;
 		
-		FontAwesomeIcon icon2 = new FontAwesomeIcon();
-		icon2.setGlyphName("CLOSE");
-		icon2.setSize("1.4em");
-		HBox.setMargin(icon2, new Insets(0,5,0,0));
+		VBox.setMargin(root, new Insets(10,0,0,0));
 		
-		HBox h = new HBox(label1,icon1,icon2);
-		h.setAlignment(Pos.CENTER_RIGHT);
-		h.setMaxHeight(30);
-		h.setPrefHeight(25);
-		h.setPrefWidth(200);
-		h.setStyle("-fx-background-color: #0000FF;");
-		
-		Label label2 = new Label("Debut : "+dateDebut);
-		label2.setPrefWidth(TextField.USE_COMPUTED_SIZE);
-		label2.setFont(new Font("System Bold",16));
-		VBox.setMargin(label2, new Insets(10,0,0,0));
-		
-		Label label3 = new Label("Fin : "+dateFin);
-		label3.setPrefWidth(TextField.USE_COMPUTED_SIZE);
-		label3.setFont(new Font("System Bold",16));
-		VBox.setMargin(label3, new Insets(5,0,0,0));
-		
-		VBox v = new VBox(h,label2,label3);
-		v.setAlignment(Pos.TOP_CENTER);
-		v.setMaxWidth(180);
-		v.setPrefHeight(100);
-		v.setPrefWidth(180);
-		v.setStyle("-fx-background-color: #2080FF;");
-		VBox.setMargin(v, new Insets(10,0,0,0));
-		
-		return v;
+		return root;
 	}
 	
 	@FXML
@@ -127,16 +97,18 @@ public class InterfaceUtilisateurController implements Initializable {
 			*/
 			
 			//sous reserve de l'ajout de la demande dans la bdd
-			demande.getChildren().add(conges(l.getNomConges(),l.getDebutConges().toString(),l.getFinConges().toString()));
+			Parent root = conges(l.getNomConges(),l.getDebutConges().toString(),l.getFinConges().toString());
+			demande.getChildren().add(root);
+			//VBox.setMargin(root, new Insets(10,0,0,0));
 			DisplayInterface.displayInfo("La demande de congés a bien été envoyée.");
-			System.out.print("Conges ajoute");
+			System.out.println("Conges ajoute");
 		}else {
-			System.out.print("Conges pas ajoute");
+			System.out.println("Conges pas ajoute");
 		}
 		
 	}
 	
-	public void addConges(String nom, String dateDebut, String dateFin) {
+	public void addConges(String nom, String dateDebut, String dateFin) throws IOException {
 		demande.getChildren().add(conges(nom,dateDebut,dateFin));
 	}
 	

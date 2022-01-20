@@ -32,7 +32,6 @@ public interface DisplayInterface {
 	
 	public static void displayInfo(String message) throws IOException {
 		
-		
 		Stage window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.initStyle(StageStyle.TRANSPARENT);

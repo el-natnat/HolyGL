@@ -101,54 +101,7 @@
                   </Label>
                   <ScrollPane hbarPolicy="NEVER" layoutX="25.0" layoutY="75.0" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #47D5FF;">
                      <content>
-                        <VBox fx:id="accepte" alignment="TOP_CENTER" prefHeight="398.0" prefWidth="200.0" style="-fx-background-color: #47D5FF;">
-                           <children>
-                              <VBox alignment="TOP_CENTER" maxWidth="180.0" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #2080FF;">
-                                 <VBox.margin>
-                                    <Insets top="10.0" />
-                                 </VBox.margin>
-                                 <children>
-                                    <HBox alignment="CENTER_RIGHT" maxHeight="30.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #0000FF;">
-                                       <children>
-                                          <Label prefWidth="130.0" text="Vacance de Noël">
-                                             <HBox.margin>
-                                                <Insets right="5.0" />
-                                             </HBox.margin>
-                                             <font>
-                                                <Font name="System Bold" size="16.0" />
-                                             </font>
-                                          </Label>
-                                          <FontAwesomeIcon glyphName="COG" size="1.4em">
-                                             <HBox.margin>
-                                                <Insets right="5.0" />
-                                             </HBox.margin>
-                                          </FontAwesomeIcon>
-                                          <FontAwesomeIcon glyphName="CLOSE" size="1.4em">
-                                             <HBox.margin>
-                                                <Insets right="5.0" />
-                                             </HBox.margin>
-                                          </FontAwesomeIcon>
-                                       </children>
-                                    </HBox>
-                                    <Label text="Debut : 20/12/2021">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label text="Fin : 24/12/2021">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                           </children></VBox>
+                        <VBox fx:id="accepte" alignment="TOP_CENTER" prefHeight="398.0" prefWidth="200.0" style="-fx-background-color: #47D5FF;" />
                      </content>
                   </ScrollPane>
                </children>
