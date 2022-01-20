@@ -29,6 +29,21 @@ public interface DisplayInterface {
 													InterfaceUtilisateurAjoutController.finConges);
 		return l;
 	}
+	
+	public static void displayInfo(String message) throws IOException {
+		
+		
+		Stage window = new Stage();
+		window.initModality(Modality.APPLICATION_MODAL);
+		window.initStyle(StageStyle.TRANSPARENT);
+		FXMLLoader loader = new FXMLLoader(Interface.class.getResource("InterfaceInfo.fxml"));
+		Parent root = loader.load();
+		InterfaceInfoController controller = loader.getController();
+		controller.updateText(message);
+		Scene scene = new Scene(root);
+		window.setScene(scene);
+		window.showAndWait();
+	}
 }
 
 class ObjectAjoutConges{

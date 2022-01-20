@@ -128,6 +128,7 @@ public class InterfaceUtilisateurController implements Initializable {
 			
 			//sous reserve de l'ajout de la demande dans la bdd
 			demande.getChildren().add(conges(l.getNomConges(),l.getDebutConges().toString(),l.getFinConges().toString()));
+			DisplayInterface.displayInfo("La demande de congés a bien été envoyée.");
 			System.out.print("Conges ajoute");
 		}else {
 			System.out.print("Conges pas ajoute");

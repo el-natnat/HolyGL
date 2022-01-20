@@ -46,6 +46,8 @@ public class InterfaceUtilisateurAjoutController implements Initializable {
 			nomConges = nomDemande.getText();
 		});
 		
+		dateDebutConges.setDayCellFactory(getDayCellFactory(LocalDate.now()));
+		
 		dateDebutConges.valueProperty().addListener((ObservableValue<? extends LocalDate> observable, LocalDate oldValue, LocalDate newValue) -> {
 			debutConges = dateDebutConges.getValue();
 			dateFinConges.setDayCellFactory(getDayCellFactory(dateDebutConges.getValue()));
@@ -53,6 +55,9 @@ public class InterfaceUtilisateurAjoutController implements Initializable {
 			if((dateFinConges.getValue()!=null)&&(dateDebutConges.getValue().isAfter(dateFinConges.getValue()))) {
 				System.out.println("Date non valide");
 				buttonValide.setDisable(true);
+			}
+			if((dateFinConges.getValue()!=null)&&(dateDebutConges.getValue().isBefore(dateFinConges.getValue().plusDays(1)))) {
+				buttonValide.setDisable(false);
 			}
 		});
 		
