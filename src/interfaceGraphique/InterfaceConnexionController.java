@@ -98,14 +98,14 @@ public class InterfaceConnexionController implements Initializable {
             // Charger le driver MYSQL
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Pour se connecter à la ("jdbc:mysql://localhost/nom de la base", "User du serveur", "Mot de passe ")
-            con = DriverManager.getConnection("jdbc:mysql://localhost/holidays", "root", "Kutdre25||");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/holidays", "root", "0000");
             // Ecrire requete
-            String requete1="select * from authentification where login=? and mdp=?";
+            String requete1="select * from authentification where login=? and mdp1=?";
             // Entrer la requete SQL
             pst=con.prepareStatement(requete1);
             
             pst.setString(1,username );
-            pst.setString(2,pass );
+            pst.setString(2,"gVELY4fim7kubu+HuShFCYO7ZUk9DCq82V3CypglMm0=$O/0yfKIzwvDoRsz85EI/mnebSjaE5OC+pT2ThhWE8Is=" );
 
             
             // exécuté requete SQL quand on fait un SELECT 
