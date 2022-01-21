@@ -5,7 +5,7 @@ import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.*;
 
-public class Mail extends Thread  {
+public class Mail   extends Thread{
 	
 	public Mail() {
 		
@@ -48,6 +48,6 @@ public class Mail extends Thread  {
 
 	public static void main(String[] arg) {
 
-		Envoie("nbreuil@enssat.fr", "Hello", "World");
+		Envoie("afaugere@enssat.fr", "Hello", "World");
 	}
 }

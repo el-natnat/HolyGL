@@ -1,5 +1,6 @@
 package interfaceGraphique;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,9 +15,12 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -29,7 +33,9 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import utils.Congé;
 import utils.Utilisateur;
 
@@ -63,6 +69,7 @@ public class InterfaceRHController implements Initializable {
 	private Button button_refuser;
 	@FXML
 	private Button button_valider;
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -158,6 +165,7 @@ public class InterfaceRHController implements Initializable {
 
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.close();
+		System.exit(1);
 	}
 
 	public class ListeCongé {
@@ -246,5 +254,22 @@ public class InterfaceRHController implements Initializable {
 		//box.setBackground(new Background(new BackgroundFill(null, null, null)));
 		button_valider.setVisible(false);
 		button_refuser.setVisible(false);
+	}
+	
+	@FXML
+	private void add_employé(ActionEvent event) throws IOException {
+		Stage window = new Stage();
+		window.initModality(Modality.APPLICATION_MODAL);
+		window.initStyle(StageStyle.TRANSPARENT);
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("InterfaceAjoutUtilisateur.fxml"));
+		Parent root = fxmlLoader.load();
+		Scene scene = new Scene(root);
+		InterfaceAjoutUtilisateurController controller = fxmlLoader.getController();
+		controller.setClient(client);
+		controller.setUtilisateur(utilisateur);
+		
+		window.setScene(scene);
+		window.showAndWait();
+	
 	}
 }

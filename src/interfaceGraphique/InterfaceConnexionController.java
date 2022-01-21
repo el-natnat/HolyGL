@@ -88,6 +88,7 @@ public class InterfaceConnexionController implements Initializable {
 
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.close();
+		System.exit(1);
 	}
 
 	@FXML

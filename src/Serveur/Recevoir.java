@@ -171,32 +171,70 @@ public class Recevoir implements Runnable {
 
 						// exécuté requete SQL quand on fait un SELECT
 						pst.executeUpdate();
- 
+
 					}
-					
+
+					// Ajoute un nouvel employé
+					if (message instanceof Add_Employé) {
+						String nom = ((Add_Employé) message).getNom();
+						String prenom = ((Add_Employé) message).getPrenom();
+						String login = ((Add_Employé) message).getLogin();
+						String psw = ((Add_Employé) message).getMdp();
+						String Statut = ((Add_Employé) message).getStatut();
+						String date = ((Add_Employé) message).getDate();
+
+						// Ecrire requete
+						String requete1 = " INSERT INTO user (idUser,nom,prenom,statut,dateEmbauche) VALUES (?,?,?,?,?);";
+						// Entrer la requete SQL
+						pst = con.prepareStatement(requete1);
+						pst.setString(1, login);
+						pst.setString(2, nom);
+						pst.setString(3, prenom);
+
+						if (Statut.equals("Gestionnaire des ressources humaines")) {
+							pst.setString(4, "RH");
+						} else if (Statut.equals("Classique"))
+						{
+							pst.setString(4, "Classic");
+						}
+						pst.setString(5, date);
+
+						// exécuté requete SQL
+						pst.executeUpdate();
+
+						requete1 = " INSERT INTO authentification (login,mdp1,modifMdp) VALUES (?,?,?);";
+						pst = con.prepareStatement(requete1);
+						pst.setString(1, login);
+						pst.setString(2, psw);
+						pst.setString(3, date);
+
+						// exécuté requete SQL q
+						pst.executeUpdate();
+
+					}
+
 					// Valide ou refuse les congés
 					if (message instanceof Accepte_Refuse_ddC) {
 						String id_congé = ((Accepte_Refuse_ddC) message).getId_congé();
-						Boolean accepte =  ((Accepte_Refuse_ddC) message).isAccepte();
-						String emetteur =  ((Accepte_Refuse_ddC) message).getEmetteur();
-						String msg =  ((Accepte_Refuse_ddC) message).getMsg();
+						Boolean accepte = ((Accepte_Refuse_ddC) message).isAccepte();
+						String emetteur = ((Accepte_Refuse_ddC) message).getEmetteur();
+						String msg = ((Accepte_Refuse_ddC) message).getMsg();
 
 						// Ecrire requete
 						String requete1 = "UPDATE demandeconges SET emetteurReponse = ?, justification=?,statut=? WHERE 	idDemande=?;";
 						// Entrer la requete SQL
 						pst = con.prepareStatement(requete1);
-						pst.setString(1,emetteur);
+						pst.setString(1, emetteur);
 						pst.setString(2, msg);
 						if (accepte) {
-							pst.setString(3,"A" );
-						}
-						else {
+							pst.setString(3, "A");
+						} else {
 							pst.setString(3, "R");
 						}
-						
+
 						pst.setString(4, id_congé);
 
-						// exécuté requete 
+						// exécuté requete
 						pst.executeUpdate();
 
 					}

@@ -137,6 +137,7 @@ public class InterfaceUtilisateurController implements Initializable {
 
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.close();
+		System.exit(1);
 	}
 
 
@@ -185,7 +186,7 @@ public class InterfaceUtilisateurController implements Initializable {
 			 client.Envoie(new Demande_ddc(null,new Congé(null, utilisateur.getId(),l.getNomConges(), "RTT",l.getDebutConges().toString(), String.valueOf(differenceInDays))));
 			
 			//envoie par mail
-			// Mail.Envoie("afaugere@enssat.fr", "Demande de congé par "+utilisateur.getNom(), utilisateur.getNom()+" a poster une demande de congé connectez vous vite sur l'application Holidays");
+			 Mail.Envoie("afaugere@enssat.fr", "Demande de congé par "+utilisateur.getNom(), utilisateur.getNom()+" a poster une demande de congé connectez vous vite sur l'application Holidays");
 
 			System.out.println("Conges ajoute");
 		} else {

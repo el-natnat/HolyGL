@@ -45,13 +45,13 @@
                      <children>
                         <TableView fx:id="tableCongé" layoutX="15.0" layoutY="15.0" prefHeight="520.0" prefWidth="520.0">
                           <columns>
-                            <TableColumn editable="false" prefWidth="200.0" text="Salarié" fx:id="nom" />
-                            <TableColumn editable="false" prefWidth="155.0" text="Date de début" fx:id="dateD" />
-                             <TableColumn editable="false" prefWidth="155.0" text="Date de fin" fx:id="dateF"/>
+                            <TableColumn fx:id="nom" editable="false" prefWidth="200.0" text="Salarié" />
+                            <TableColumn fx:id="dateD" editable="false" prefWidth="155.0" text="Date de début" />
+                             <TableColumn fx:id="dateF" editable="false" prefWidth="155.0" text="Date de fin" />
                           </columns>
                         </TableView>
                         <VBox fx:id="box" layoutX="570.0" layoutY="50.0" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #dddddd;" />
-                        <Button fx:id="button_valider" layoutX="595.0" layoutY="465.0" mnemonicParsing="false"  onAction="#valider" prefHeight="50.0" prefWidth="100.0" text="Valider le&#10;congés" textAlignment="CENTER" />
+                        <Button fx:id="button_valider" layoutX="595.0" layoutY="465.0" mnemonicParsing="false" onAction="#valider" prefHeight="50.0" prefWidth="100.0" text="Valider le&#10;congés" textAlignment="CENTER" />
                         <Button fx:id="button_refuser" layoutX="745.0" layoutY="465.0" mnemonicParsing="false" onAction="#refuser" prefHeight="50.0" prefWidth="100.0" text="Refuser le&#10;congés" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
@@ -59,7 +59,10 @@
           </Tab>
           <Tab text="Utilisateur">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="add_employé" layoutX="50.0" layoutY="475.0" onAction="#add_employé" mnemonicParsing="false" prefHeight="30.0" prefWidth="400.0" text="Ajouter un nouvel employé" />
+                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>
