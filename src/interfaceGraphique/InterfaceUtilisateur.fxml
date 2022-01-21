@@ -38,7 +38,7 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="580.0" prefWidth="400.0">
                <children>
-                  <Label text="Bonjour, Mr X, il vous avez :">
+                  <Label fx:id="bonjour" text="Bonjour, Mr X, il vous avez :">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -46,7 +46,7 @@
                         <Insets top="150.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="n jours de congés disponibles">
+                  <Label fx:id="nombreConge" text="n jours de congés disponibles">
                      <font>
                         <Font size="18.0" />
                      </font>

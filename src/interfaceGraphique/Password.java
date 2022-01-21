@@ -57,7 +57,7 @@ public class Password implements Serializable {
   /*  public static void main(String[] arg) throws Exception {
 
     	
-    	String mdp= getSaltedHash("Fares");
+    	String mdp= getSaltedHash("1234");
 		System.out.println("1: "+mdp);
 		String md= getSaltedHash("Fares");
 		System.out.println("2: "+md);

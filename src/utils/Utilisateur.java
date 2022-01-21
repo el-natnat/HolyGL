@@ -29,6 +29,18 @@ public class Utilisateur  implements Serializable{
 		this.quotite = quotite;
 		this.nbr_CongéDispo=nbr_CongéDispo;
 	}
+	
+	public Utilisateur(String id, String nom, String prenom, String statut, String superieur, String dateEmbauche,
+			String quotite) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.statut = statut;
+		this.superieur = superieur;
+		this.dateEmbauche = dateEmbauche;
+		this.quotite = quotite;
+	}
 	@Override
 	public String toString() {
 		return "Utilisateur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", statut=" + statut + ", superieur="

@@ -19,6 +19,13 @@ public class Demande_Liste_congé_a_valider extends Message implements Serializab
 	public String toString() {
 		return "Demande_Liste_congé_a_valider [id_demandeur=" + id_demandeur + "]";
 	}
+
+	/**
+	 * @return the id_demandeur
+	 */
+	public String getId_demandeur() {
+		return id_demandeur;
+	}
 	
 	
 

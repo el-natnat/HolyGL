@@ -2,6 +2,9 @@ package utils;
 
 import java.io.Serializable;
 
+
+
+
 public class Congé implements Serializable{
 
 	/**
@@ -10,6 +13,7 @@ public class Congé implements Serializable{
 	private static final long serialVersionUID = -7394976055673042633L;
 	public String id;
 	public String utilisateur;
+	public Utilisateur user;
 	public String nomDemande;
 	public String typeCongé;
 	public String dateDébut;
@@ -18,6 +22,8 @@ public class Congé implements Serializable{
 	public String statut;
 	public String emetteurReponse;
 	public String justification;
+	
+
 	@Override
 	public String toString() {
 		return "Congé [id=" + id + ", utilisateur=" + utilisateur + ", nomDemande=" + nomDemande + ", typeCongé="
@@ -37,6 +43,21 @@ public class Congé implements Serializable{
 	}
 	
 	
+
+	public Congé(String id, String nomDemande, String typeCongé, String dateDébut, String nbjour,
+			String dateDemade, String statut, String emetteurReponse, String justification, Utilisateur user) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.nomDemande = nomDemande;
+		this.typeCongé = typeCongé;
+		this.dateDébut = dateDébut;
+		this.nbjour = nbjour;
+		this.dateDemade = dateDemade;
+		this.statut = statut;
+		this.emetteurReponse = emetteurReponse;
+		this.justification = justification;
+	}
 	public Congé(String id, String utilisateur, String nomDemande, String typeCongé, String dateDébut, String nbjour,
 			String dateDemade, String statut, String emetteurReponse, String justification) {
 		super();
@@ -110,6 +131,12 @@ public class Congé implements Serializable{
 	 */
 	public String getJustification() {
 		return justification;
+	}
+	/**
+	 * @return the user
+	 */
+	public Utilisateur getUser() {
+		return user;
 	}
 	
 	

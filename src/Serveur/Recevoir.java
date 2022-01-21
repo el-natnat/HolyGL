@@ -78,24 +78,30 @@ public class Recevoir implements Runnable {
 							pst.setString(1, idUser);
 							// exécuté requete SQL quand on fait un SELECT
 							rs = pst.executeQuery();
-							rs.next();
+							if (rs.next()) {
 
-							utilisateur = new Utilisateur(rs.getString(1), rs.getString(2), rs.getString(3),
-									rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), null);
+								utilisateur = new Utilisateur(rs.getString(1), rs.getString(2), rs.getString(3),
+										rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), null);
 
-							// recherche le nombre de congé dispo
-							// Ecrire requete
-							requete1 = "SELECT nbJours FROM tableconges WHERE type=? AND id=?;";
-							// Entrer la requete SQL
-							pst = con.prepareStatement(requete1);
-							pst.setString(1, "RTT");
-							pst.setString(2, idUser);
-							// exécuté requete SQL quand on fait un SELECT
-							rs = pst.executeQuery();
-							rs.next();
-							utilisateur.setNbr_CongéDispo(rs.getString(1));
-
-							this.service.Envoie(new Reponse_recherche_utilisateur(null, true, utilisateur));
+								if (utilisateur.getStatut().equals("Classic")) {
+									// recherche le nombre de congé dispo
+									// Ecrire requete
+									requete1 = "SELECT nbJours FROM tableconges WHERE type=? AND id=?;";
+									// Entrer la requete SQL
+									pst = con.prepareStatement(requete1);
+									pst.setString(1, "RTT");
+									pst.setString(2, idUser);
+									// exécuté requete SQL quand on fait un SELECT
+									rs = pst.executeQuery();
+									if (rs.next()) {
+										utilisateur.setNbr_CongéDispo(rs.getString(1));
+									}
+								}
+								this.service.Envoie(new Reponse_recherche_utilisateur(null, true, utilisateur));
+							} else {
+								this.service.Envoie(new Reponse_recherche_utilisateur(null, false,
+										new Utilisateur(null, null, null, null, null, null, null, null)));
+							}
 						} else {
 							this.service.Envoie(new Reponse_recherche_utilisateur(null, false,
 									new Utilisateur(null, null, null, null, null, null, null, null)));
@@ -125,6 +131,30 @@ public class Recevoir implements Runnable {
 						this.service.Envoie(new Reponse_Liste_Congé(null, conges));
 					}
 
+					// Demande_liste congé a vaider
+					if (message instanceof Demande_Liste_congé_a_valider) {
+						String id = ((Demande_Liste_congé_a_valider) message).getId_demandeur();
+						ArrayList<Congé> conges = new ArrayList<Congé>();
+
+						// Ecrire requete
+						String requete1 = "SELECT * FROM demandeconges,user where demandeconges.utilisateur=user.idUser and demandeconges.statut = \"T\";";
+						// Entrer la requete SQL
+						pst = con.prepareStatement(requete1);
+						;
+
+						// exécuté requete SQL quand on fait un SELECT
+						rs = pst.executeQuery();
+						while (rs.next()) {
+							conges.add(new Congé(rs.getString(1), rs.getString(2), rs.getString(4), rs.getString(5),
+									rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
+									rs.getString(10),
+									new Utilisateur(rs.getString(11), rs.getString(12), rs.getString(13),
+											rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17))));
+
+						}
+						this.service.Envoie(new Reponse_Liste_Congé(null, conges));
+					}
+
 					// Entre une demande de congé
 					if (message instanceof Demande_ddc) {
 						Congé congé = ((Demande_ddc) message).getConge();
@@ -139,11 +169,9 @@ public class Recevoir implements Runnable {
 						pst.setString(4, congé.getDateDébut());
 						pst.setString(5, congé.getNbjour());
 
-
-
 						// exécuté requete SQL quand on fait un SELECT
-						 pst.executeUpdate();
-						
+						pst.executeUpdate();
+
 					}
 
 				} catch (ClassNotFoundException e) {
