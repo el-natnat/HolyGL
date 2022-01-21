@@ -50,9 +50,9 @@
                              <TableColumn editable="false" prefWidth="155.0" text="Date de fin" fx:id="dateF"/>
                           </columns>
                         </TableView>
-                        <VBox layoutX="570.0" layoutY="50.0" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #dddddd;" />
-                        <Button layoutX="595.0" layoutY="465.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Valider le&#10;congés" textAlignment="CENTER" />
-                        <Button layoutX="745.0" layoutY="465.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Refuser le&#10;congés" textAlignment="CENTER" />
+                        <VBox fx:id="box" layoutX="570.0" layoutY="50.0" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #dddddd;" />
+                        <Button fx:id="button_valider" layoutX="595.0" layoutY="465.0" mnemonicParsing="false"  onAction="#valider" prefHeight="50.0" prefWidth="100.0" text="Valider le&#10;congés" textAlignment="CENTER" />
+                        <Button fx:id="button_refuser" layoutX="745.0" layoutY="465.0" mnemonicParsing="false" onAction="#refuser" prefHeight="50.0" prefWidth="100.0" text="Refuser le&#10;congés" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
             </content>

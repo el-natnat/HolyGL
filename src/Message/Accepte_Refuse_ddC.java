@@ -27,6 +27,37 @@ public class Accepte_Refuse_ddC extends Message implements Serializable {
 		return "Accepte_Refuse_ddC [id_congé=" + id_congé + ", emetteur=" + emetteur + ", receveur=" + receveur
 				+ ", accepte=" + accepte + ", msg=" + msg + "]";
 	}
+	/**
+	 * @return the id_congé
+	 */
+	public String getId_congé() {
+		return id_congé;
+	}
+	/**
+	 * @return the emetteur
+	 */
+	public String getEmetteur() {
+		return emetteur;
+	}
+	/**
+	 * @return the receveur
+	 */
+	public String getReceveur() {
+		return receveur;
+	}
+	/**
+	 * @return the accepte
+	 */
+	public boolean isAccepte() {
+		return accepte;
+	}
+	/**
+	 * @return the msg
+	 */
+	public String getMsg() {
+		return msg;
+	}
+	
 	
 	
 

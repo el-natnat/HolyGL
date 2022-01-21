@@ -171,6 +171,33 @@ public class Recevoir implements Runnable {
 
 						// exécuté requete SQL quand on fait un SELECT
 						pst.executeUpdate();
+ 
+					}
+					
+					// Valide ou refuse les congés
+					if (message instanceof Accepte_Refuse_ddC) {
+						String id_congé = ((Accepte_Refuse_ddC) message).getId_congé();
+						Boolean accepte =  ((Accepte_Refuse_ddC) message).isAccepte();
+						String emetteur =  ((Accepte_Refuse_ddC) message).getEmetteur();
+						String msg =  ((Accepte_Refuse_ddC) message).getMsg();
+
+						// Ecrire requete
+						String requete1 = "UPDATE demandeconges SET emetteurReponse = ?, justification=?,statut=? WHERE 	idDemande=?;";
+						// Entrer la requete SQL
+						pst = con.prepareStatement(requete1);
+						pst.setString(1,emetteur);
+						pst.setString(2, msg);
+						if (accepte) {
+							pst.setString(3,"A" );
+						}
+						else {
+							pst.setString(3, "R");
+						}
+						
+						pst.setString(4, id_congé);
+
+						// exécuté requete 
+						pst.executeUpdate();
 
 					}
 
